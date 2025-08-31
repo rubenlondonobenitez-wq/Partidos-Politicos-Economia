@@ -436,9 +436,109 @@
         /* Efectos de texto */
         .text-gradient {
             background: linear-gradient(to right, var(--naranja), var(--naranja-claro));
-            -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 800;
+        }
+        
+        /* Nuevos estilos para las propuestas adicionales */
+        .propuestas-adicionales {
+            background-color: #fff;
+            padding: 80px 0;
+        }
+        
+        .propuesta-destacada {
+            border-left: 5px solid var(--naranja);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .numero-propuesta {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--naranja);
+            margin-right: 15px;
+            line-height: 1;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: var(--naranja);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+            width: 50%;
+            padding: 0 40px;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid white;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: -10px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-right: 10px solid white;
+        }
+        
+        .timeline-circle {
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--naranja);
+            border-radius: 50%;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-circle {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-circle {
+            left: -10px;
         }
     </style>
 </head>
@@ -456,9 +556,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#propuestas">Propuestas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#multimedia">Multimedia</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#inclusion">Inclusión</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#educacion">Educación</a></li>
                 </ul>
             </div>
         </div>
@@ -479,7 +578,7 @@
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2gij6X2p1qg1Kj5xwAd4Xi3YdU0fxXyZkQ&s" alt="Ayanokoji Kiyotaka" class="ayanokoji-img">
                 </div>
                 <div class="col-lg-7 animate-fadeInRight">
-                    <h1 class="main-slogan">La inteligencia al servicio del pueblo, la estrategia para la igualdad.</h1>
+                    <h1 class="main-slogan">La inteligencia al servicio del pueblo.<br>La estrategia para la igualdad.</h1>
                     <h2 class="secondary-slogan">"Tu voz no se pide, se ejerce. Juntos somos poder."</h2>
                     
                     <p class="lead mb-4">Como Ayanokoji, planificamos cada movimiento para ganar la batalla por la igualdad.</p>
@@ -552,7 +651,102 @@
                     </div>
                 </div>
             </div>
+        
+        </div>
+    </section>
 
+    <!-- Propuestas Adicionales: Inclusión -->
+    <section id="inclusion" class="propuestas-adicionales">
+        <div class="container">
+            <h2 class="section-title">Inclusión Real de Grupos Históricamente Marginados</h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="propuesta-destacada animate__animated animate__fadeInLeft">
+                        <h3><span class="numero-propuesta">4</span>Cuotas indígenas y afro en todos los niveles de gobierno</h3>
+                        <p>Garantizaremos la representación real de las comunidades indígenas y afrocolombianas en todos los niveles de gobierno, desde los concejos municipales hasta el congreso nacional.</p>
+                    </div>
+                    
+                    <div class="propuesta-destacada animate__animated animate__fadeInLeft delay-1">
+                        <h3><span class="numero-propuesta">5</span>Políticas de género con enfoque interseccional</h3>
+                        <p>Implementaremos educación no sexista, protección efectiva contra violencias y paridad real en listas electorales para asegurar la igualdad de oportunidades para todas las personas.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="propuesta-destacada animate__animated animate__fadeInRight delay-2">
+                        <h3><span class="numero-propuesta">6</span>Consulta previa vinculante para comunidades étnicas</h3>
+                        <p>Estableceremos mecanismos legales para que las comunidades étnicas tengan voz y voto vinculante en proyectos económicos que afecten sus territorios y formas de vida.</p>
+                    </div>
+                    
+                    <div class="text-center mt-5 animate__animated animate__fadeIn delay-3">
+                        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Inclusión y diversidad" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuestas Adicionales: Educación y Salud -->
+    <section id="educacion" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Educación y Salud como Derechos Universales</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item animate__animated animate__fadeInLeft">
+                    <div class="timeline-circle"></div>
+                    <div class="timeline-content">
+                        <h4>Educación pública gratuita y laica</h4>
+                        <p>Garantizaremos educación pública gratuita y laica desde primera infancia hasta universidad, con calidad y acceso para todos.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate__animated animate__fadeInRight">
+                    <div class="timeline-circle"></div>
+                    <div class="timeline-content">
+                        <h4>Salud comunitaria descentralizada</h4>
+                        <p>Crearemos centros de salud con juntas vecinales de control para garantizar servicios médicos accesibles y de calidad en todas las comunidades.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item animate__animated animate__fadeInLeft">
+                    <div class="timeline-circle"></div>
+                    <div class="timeline-content">
+                        <h4>Cátedras de memoria histórica</h4>
+                        <p>Implementaremos cátedras obligatorias de memoria histórica y participación ciudadana en todos los niveles educativos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-6 animate__animated animate__fadeIn">
+                    <div class="card proposal-card">
+                        <div class="card-header">
+                            <i class="fas fa-graduation-cap me-2"></i> Nuestra Visión Educativa
+                        </div>
+                        <div class="card-body">
+                            <p>Creemos en una educación que libere, que forme ciudadanos críticos y conscientes de sus derechos. Una educación que responda a las necesidades reales de las comunidades y que prepare para los desafíos del futuro.</p>
+                            <div class="text-center">
+                                <i class="fas fa-book-open proposal-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 animate__animated animate__fadeIn delay-1">
+                    <div class="card proposal-card">
+                        <div class="card-header">
+                            <i class="fas fa-heartbeat me-2"></i> Nuestra Visión en Salud
+                        </div>
+                        <div class="card-body">
+                            <p>Defendemos un sistema de salud preventivo, comunitario y descentralizado. Donde las decisiones se tomen con participación ciudadana y donde la salud sea entendida como un derecho fundamental, no como un privilegio.</p>
+                            <div class="text-center">
+                                <i class="fas fa-hospital proposal-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -638,7 +832,7 @@
                     <h5>Contacto</h5>
                     <p><i class="fas fa-map-marker-alt me-2"></i> Medellín, Colombia</p>
                     <p><i class="fas fa-envelope me-2"></i> ruben.londono.benitez@iemariacano.edu.co</p>
-                    <p><i class="fas fa-phone me-2"></i> +57 3018219948</p>
+                    <p><i class="fas fa-phone me-2"></i> +57 301 821 9948</p>
                 </div>
                 <div class="col-lg-4 mb-4">
                     <h5>Síguenos</h5>
