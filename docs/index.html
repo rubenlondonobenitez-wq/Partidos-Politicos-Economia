@@ -1,12 +1,726 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Voz del Pueblo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA VOZ DEL PUEBLO - Inteligencia al servicio del pueblo</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Animate.css para animaciones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --naranja: #FF5722;
+            --naranja-claro: #FF8A65;
+            --naranja-oscuro: #D84315;
+            --negro: #212121;
+            --blanco: #FFFFFF;
+            --gris: #757575;
+        }
+        
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: var(--negro);
+            overflow-x: hidden;
+            background-color: #f8f9fa;
+        }
+        
+        .navbar {
+            background-color: var(--negro);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            color: var(--naranja) !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--blanco) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--naranja);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            background: linear-gradient(to right, var(--negro) 40%, rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516387938699-a93567ec168e?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .ayanokoji-img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transform: perspective(800px) rotateY(-10deg);
+            transition: all 0.5s ease;
+            border: 3px solid var(--naranja);
+        }
+        
+        .ayanokoji-img:hover {
+            transform: perspective(800px) rotateY(0);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
+        
+        .main-slogan {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 20px 0;
+            color: var(--naranja);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+        
+        .secondary-slogan {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--blanco);
+        }
+        
+        .btn-custom {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            margin: 10px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-custom:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            z-index: -1;
+        }
+        
+        .btn-custom:hover:before {
+            width: 100%;
+        }
+        
+        .btn-join {
+            background-color: var(--naranja);
+            border: none;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+        }
+        
+        .btn-donate {
+            background-color: transparent;
+            border: 2px solid var(--naranja);
+            color: var(--naranja);
+        }
+        
+        .btn-donate:hover {
+            background-color: var(--naranja);
+            color: white;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            font-weight: 800;
+            color: var(--negro);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--naranja);
+            margin: 15px auto;
+        }
+        
+        .proposal-card {
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+            background: white;
+            border: none;
+            transform: translateY(0);
+        }
+        
+        .proposal-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-header {
+            background: linear-gradient(to right, var(--naranja), var(--naranja-oscuro));
+            color: white;
+            font-weight: 700;
+            padding: 15px 20px;
+            border: none;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .proposal-icon {
+            font-size: 2.5rem;
+            color: var(--naranja);
+            margin-bottom: 15px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .proposal-card:hover .proposal-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .manifesto-section {
+            background: linear-gradient(to right, var(--negro), var(--naranja-oscuro));
+            padding: 80px 0;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .manifesto-section:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+            animation: pulse 15s infinite linear;
+        }
+        
+        .manifesto-text {
+            font-style: italic;
+            font-size: 1.3rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            border-left: 4px solid var(--naranja);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(to right, var(--naranja), var(--naranja-oscuro));
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        
+        .comparison-table tr {
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #fff3e0;
+        }
+        
+        .footer {
+            background-color: var(--negro);
+            color: white;
+            padding: 60px 0 20px;
+            position: relative;
+        }
+        
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--naranja), var(--naranja-oscuro));
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            color: var(--naranja);
+            transform: translateY(-5px) scale(1.2);
+        }
+        
+        .disclaimer {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 20px;
+        }
+        
+        /* Animaciones personalizadas */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+        
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .animate-float {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .animate-pulse {
+            animation: pulse 3s ease infinite;
+        }
+        
+        .animate-fadeInLeft {
+            animation: fadeInLeft 1s ease forwards;
+        }
+        
+        .animate-fadeInRight {
+            animation: fadeInRight 1s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+        
+        .particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            background: rgba(255, 87, 34, 0.1);
+            border-radius: 50%;
+        }
+        
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(2) {
+            width: 50px;
+            height: 50px;
+            top: 60%;
+            left: 5%;
+            animation: float 12s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(3) {
+            width: 70px;
+            height: 70px;
+            top: 40%;
+            right: 5%;
+            animation: float 18s ease-in-out infinite;
+        }
+        
+        .shape:nth-child(4) {
+            width: 40px;
+            height: 40px;
+            top: 70%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite;
+        }
+        
+        /* Efectos de texto */
+        .text-gradient {
+            background: linear-gradient(to right, var(--naranja), var(--naranja-claro));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+    </style>
 </head>
 <body>
-  <h1>Bienvenido a LA VOZ DEL PUEBLO</h1>
-  <p>La inteligencia al servicio del pueblo.</p>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="text-gradient">LA VOZ DEL PUEBLO</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#propuestas">Propuestas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#multimedia">Multimedia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        
+        <div class="container hero-content">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0 animate-fadeInLeft">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQg2gij6X2p1qg1Kj5xwAd4Xi3YdU0fxXyZkQ&s" alt="Ayanokoji Kiyotaka" class="ayanokoji-img">
+                </div>
+                <div class="col-lg-7 animate-fadeInRight">
+                    <h1 class="main-slogan">La inteligencia al servicio del pueblo, la estrategia para la igualdad.</h1>
+                    <h2 class="secondary-slogan">"Tu voz no se pide, se ejerce. Juntos somos poder."</h2>
+                    
+                    <p class="lead mb-4">Como Ayanokoji, planificamos cada movimiento para ganar la batalla por la igualdad.</p>
+                    <div class="d-flex flex-wrap">
+                        <a href="#unete" class="btn btn-join btn-custom animate__animated animate__pulse animate__infinite"><i class="fas fa-users me-2"></i>Únete al cambio</a>
+                        <a href="#donar" class="btn btn-donate btn-custom"><i class="fas fa-donate me-2"></i>Donar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuestas Section -->
+    <section id="propuestas" class="py-5">
+        <div class="container">
+            <h2 class="section-title animate__animated animate__fadeIn">Nuestras Propuestas</h2>
+            
+            <div class="row">
+                <!-- Propuesta 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="proposal-card animate__animated animate__fadeInUp">
+                        <div class="card-header">
+                            <i class="fas fa-vote-yea me-2"></i> Democracia Participativa Radical
+                        </div>
+                        <div class="card-body">
+                            <div class="proposal-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <p>Asambleas ciudadanas municipales: Decisiones presupuestales y de inversión local mediante consultas abiertas y vinculantes.</p>
+                            <p>Plataforma digital de participación: Votaciones en tiempo real sobre proyectos de ley, rendición de cuentas y veedurías públicas.</p>
+                            <p>Revocatoria de mandato simplificada: Mecanismos ágiles para remover funcionarios que incumplan promesas.</p>
+                            <small class="text-muted">"Como Ayanokoji planifica sus estrategias: con datos y participación real"</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Propuesta 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="proposal-card animate__animated animate__fadeInUp delay-1">
+                        <div class="card-header">
+                            <i class="fas fa-tractor me-2"></i> Reforma Agraria y Económica
+                        </div>
+                        <div class="card-body">
+                            <div class="proposal-icon">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <p>Tierra para quien la trabaja: Distribución equitativa de latifundios improductivos entre campesinos, con apoyo técnico y créditos.</p>
+                            <p>Economía popular solidaria: Impulso a cooperativas, microempresas y mercados locales con exenciones fiscales.</p>
+                            <p>Renta básica rural: Apoyo económico para agricultores en transición hacia modelos sostenibles.</p>
+                            <small class="text-muted">"Distribución inteligente de la tierra, sin dejar nada al azar"</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Propuesta 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="proposal-card animate__animated animate__fadeInUp delay-2">
+                        <div class="card-header">
+                            <i class="fas fa-globe-americas me-2"></i> Sostenibilidad Ambiental
+                        </div>
+                        <div class="card-body">
+                            <div class="proposal-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <p>Prohibición de megaproyectos extractivos sin consentimiento comunitario.</p>
+                            <p>Transición energética liderada por comunidades.</p>
+                            <p>Protección legal de páramos y fuentes hídricas.</p>
+                            <small class="text-muted">"Decisiones calculadas para garantizar un futuro sostenible"</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Manifiesto Section -->
+    <section class="manifesto-section">
+        <div class="container">
+            <h2 class="section-title text-white">Nuestro Manifiesto</h2>
+            <blockquote class="manifesto-text">
+                "No venimos a hablar por ustedes. Venimos a que su voz sea ley. No creemos en salvadores: creemos en el pueblo organizado. Juntos acabaremos con la herencia del centralismo, el elitismo y la indiferencia. Construiremos un país donde la dignidad sea costumbre."
+            </blockquote>
+        </div>
+    </section>
+
+    <!-- Comparación Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">¿En qué somos diferentes?</h2>
+            
+            <div class="table-responsive">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>Partidos tradicionales</th>
+                            <th>LA VOZ DEL PUEBLO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Toma de decisiones</td>
+                            <td>Vertical y entre élites</td>
+                            <td>Horizontal y participativa</td>
+                        </tr>
+                        <tr>
+                            <td>Enfoque de derechos</td>
+                            <td>Limitado a discursos formales</td>
+                            <td>Prioridad a derechos económicos y culturales</td>
+                        </tr>
+                        <tr>
+                            <td>Transparencia</td>
+                            <td>Opacidad y clientelismo</td>
+                            <td>Rendición de cuentas en tiempo real</td>
+                        </tr>
+                        <tr>
+                            <td>Representación</td>
+                            <td>Monopolio de voceros tradicionales</td>
+                            <td>Inclusión de líderes sociales y comunitarios</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="unete" class="py-5" style="background: linear-gradient(to right, var(--naranja), var(--naranja-oscuro)); color: white;">
+        <div class="container text-center">
+            <h2 class="mb-4">¿Listo para ser parte del cambio?</h2>
+            <p class="lead mb-4">Únete a miles de colombianos que están tomando el control de su futuro</p>
+            <form class="row g-3 justify-content-center">
+                <div class="col-md-4">
+                    <input type="text" class="form-control form-control-lg" placeholder="Tu nombre">
+                </div>
+                <div class="col-md-4">
+                    <input type="email" class="form-control form-control-lg" placeholder="Tu correo electrónico">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-light btn-lg w-100">Unirse</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>LA VOZ DEL PUEBLO</h5>
+                    <p>Un movimiento ciudadano que cree en el poder de la gente y la inteligencia colectiva para transformar Colombia.</p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Contacto</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> Medellín, Colombia</p>
+                    <p><i class="fas fa-envelope me-2"></i> ruben.londono.benitez@iemariacano.edu.co</p>
+                    <p><i class="fas fa-phone me-2"></i> +57 3018219948</p>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5>Síguenos</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                    <div class="mt-3">
+                        <p>#LaVozDelPuebloEsPoder #YaNoNosCallamos</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="disclaimer">© 2025 LA VOZ DEL PUEBLO. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="disclaimer">Ayanokoji es un símbolo ficticio de estrategia y determinación. No afiliado a los creadores de Classroom of the Elite.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animación al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animación para elementos con clases de animate.css
+            const animatedElements = document.querySelectorAll('.animate__animated');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const animation = entry.target.getAttribute('data-animation');
+                        entry.target.classList.add('animate__' + animation);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Efecto de escritura para el eslogan
+            const mainSlogan = document.querySelector('.main-slogan');
+            const originalText = mainSlogan.textContent;
+            mainSlogan.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    mainSlogan.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            setTimeout(typeWriter, 1000);
+        });
+        
+        // Efecto de parallax en scroll
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-section');
+            hero.style.backgroundPosition = `center ${scrolled * 0.4}px`;
+            
+            // Efecto en navbar
+            const navbar = document.querySelector('.navbar');
+            if (scrolled > 100) {
+                navbar.style.backgroundColor = 'rgba(33, 33, 33, 0.95)';
+                navbar.style.padding = '10px 0';
+            } else {
+                navbar.style.backgroundColor = 'var(--negro)';
+                navbar.style.padding = '15px 0';
+            }
+        });
+    </script>
 </body>
 </html>
